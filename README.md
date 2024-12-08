@@ -3,9 +3,6 @@
 ## Overview
 This project implements an interactive B-Tree index file manager. Users can create, manage, and query index files stored in a file-based structure using a B-Tree of minimal degree 10.
 
-I was travelling duirng the duration of this project, hence all the commits were made late.
-
-
 ## Features
 - Create and open index files.
 - Insert key-value pairs into a B-Tree.
@@ -31,3 +28,5 @@ I was travelling duirng the duration of this project, hence all the commits were
 1. Save the code to a file named `os_p3.py`.
 2. Run the program using Python:
    python3 os_p3.py
+3. The in.csv file contains key-value pairs that will be loaded during the execution of the "load".
+4. The out.csv file contains key-value pairs that will be extracted during the execution of the "extract".
