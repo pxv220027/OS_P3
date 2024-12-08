@@ -165,3 +165,101 @@ class BTree:
             for child_block_id in node.child_block_ids:
                 child_node = self.load_node(child_block_id)
                 self._write_node_to_file(child_node, file)
+
+def main():
+    current_btree = None
+    while True:
+        print("\n" + "=" * 40)
+        print(" " * 12 + "COMMAND MENU")
+        print("=" * 40)
+        print("  create  - Create a new index file")
+        print("  open    - Open an existing index file")
+        print("  insert  - Insert a key-value pair")
+        print("  search  - Search for a key")
+        print("  load    - Load key-value pairs from a file")
+        print("  print   - Print B-Tree structure")
+        print("  extract - Save keys and values to a file")
+        print("  quit    - Exit the program")
+        print("=" * 40)
+
+        command = input("Enter command: ").strip().lower()
+        if command == "create":
+            index_file_name = input("Enter index file name: ").strip()
+            if os.path.exists(index_file_name):
+                overwrite_confirmation = input("File exists. Overwrite? (yes/no): ").strip().lower()
+                if overwrite_confirmation != "yes":
+                    print("Create command aborted.")
+                    continue
+            current_btree = BTree(index_file_name)
+            current_btree.create_index_file()
+        elif command == "open":
+            index_file_name = input("Enter index file name: ").strip()
+            if not os.path.exists(index_file_name):
+                print("Error: File not found.")
+                continue
+            current_btree = BTree(index_file_name)
+            try:
+                current_btree.load_header()
+                print(f"Index file '{index_file_name}' opened successfully.")
+            except ValueError as error:
+                print(f"Error opening file: {error}")
+                current_btree = None
+        elif command == "insert":
+            if not current_btree:
+                print("Error: No index file is open.")
+                continue
+            try:
+                key_to_insert = int(input("Enter key: "))
+                value_to_insert = int(input("Enter value: "))
+                current_btree.insert(key_to_insert, value_to_insert)
+            except ValueError:
+                print("Invalid input! Please enter integer values.")
+        elif command == "search":
+            if not current_btree:
+                print("Error: No index file is open.")
+                continue
+            try:
+                key_to_search = int(input("Enter key to search: "))
+                found_value = current_btree.search(key_to_search)
+                if found_value is not None:
+                    print(f"Key '{key_to_search}' found with value '{found_value}'.")
+                else:
+                    print(f"Key '{key_to_search}' not found.")
+            except ValueError:
+                print("Invalid input! Please enter an integer key.")
+        elif command == "load":
+            if not current_btree:
+                print("Error: No index file is open.")
+                continue
+            input_file_name = input("Enter file name containing key-value pairs: ").strip()
+            if not os.path.exists(input_file_name):
+                print("Error: File not found.")
+                continue
+            try:
+                with open(input_file_name, "r") as input_file:
+                    for line in input_file:
+                        key, value = map(int, line.strip().split(","))
+                        current_btree.insert(key, value)
+                print(f"Key-value pairs successfully loaded from '{input_file_name}'.")
+            except Exception as error:
+                print(f"Error loading file: {error}")
+        elif command == "print":
+            if not current_btree:
+                print("Error: No index file is open.")
+                continue
+            print("B-Tree contents:")
+            current_btree.print_tree()
+        elif command == "extract":
+            if not current_btree:
+                print("Error: No index file is open.")
+                continue
+            output_file_name = input("Enter output file name: ").strip()
+            current_btree.extract_to_file(output_file_name)
+        elif command == "quit":
+            print("Exiting program.")
+            break
+        else:
+            print("Unknown command. Please try again.")
+
+if __name__ == "__main__":
+    main()
