@@ -30,4 +30,4 @@ I was travelling duirng the duration of this project, hence all the commits were
 ## How to Run
 1. Save the code to a file named `os_p3.py`.
 2. Run the program using Python:
-   python3 btree.py
+   python3 os_p3.py
