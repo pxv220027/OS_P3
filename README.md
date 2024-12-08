@@ -3,6 +3,9 @@
 ## Overview
 This project implements an interactive B-Tree index file manager. Users can create, manage, and query index files stored in a file-based structure using a B-Tree of minimal degree 10.
 
+I was travelling duirng the duration of this project, hence all the commits were made late.
+
+
 ## Features
 - Create and open index files.
 - Insert key-value pairs into a B-Tree.
