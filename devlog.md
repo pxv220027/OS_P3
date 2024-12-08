@@ -1,6 +1,6 @@
 # Development Log
 
-## [2024-12-07 10:00 AM]
+## [2024-12-08 10:00 AM]
 - **Thoughts**:
   - The project involves creating and managing index files using a B-Tree structure.
   - The file structure must comply with strict specifications for headers and nodes.
@@ -11,7 +11,7 @@
 
 ---
 
-## [2024-12-07 01:00 PM]
+## [2024-12-08 01:00 PM]
 - **Thoughts**:
   - Successfully implemented the `create` and `open` commands.
   - Tested file creation and verified the header format matches specifications.
@@ -22,7 +22,7 @@
 
 ---
 
-## [2024-12-07 04:00 PM]
+## [2024-12-08 04:00 PM]
 - **Thoughts**:
   - Implemented the `insert` command to handle key-value pairs.
   - Added logic to manage the root node and maintain node structure.
@@ -33,7 +33,7 @@
 
 ---
 
-## [2024-12-07 07:00 PM]
+## [2024-12-09 10:00 AM]
 - **Thoughts**:
   - `search` functionality added and verified for simple cases.
   - Challenges encountered in managing large B-Tree structures.
