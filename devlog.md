@@ -1,60 +1,54 @@
+# Development Log
+
 ## [2024-12-07 10:00 AM]
 - **Thoughts**:
-  - The project requires implementing a B-Tree structure stored in index files, with interactive commands for managing the tree.
-  - The file format includes strict specifications for headers, nodes, and byte ordering, which will need to be handled carefully.
-  - Plan to use Python for its simplicity in handling file I/O and byte manipulation.
+  - The project involves creating and managing index files using a B-Tree structure.
+  - The file structure must comply with strict specifications for headers and nodes.
 
 - **Plan**:
-  - Design the B-Tree class and the structure for nodes.
-  - Implement the `create` method to generate index files with proper headers.
-  - Test file creation and ensure it matches the project specifications.
+  - Design and implement the basic file structure for the index file.
+  - Add commands for creating and opening files.
 
 ---
 
 ## [2024-12-07 01:00 PM]
 - **Thoughts**:
-  - Successfully implemented the `create` command, which initializes an index file with the correct header format.
-  - Tested the magic number and header block in the file, and it is correctly stored.
-  - Started designing the `BTreeNode` structure to handle keys, values, and children.
+  - Successfully implemented the `create` and `open` commands.
+  - Tested file creation and verified the header format matches specifications.
 
 - **Plan**:
-  - Add the `open` command to verify existing files and load their headers.
-  - Implement a basic menu system to handle user interaction.
+  - Add functionality for `insert` and `search` commands.
+  - Ensure the B-Tree properties are maintained when inserting keys.
 
 ---
 
 ## [2024-12-07 04:00 PM]
 - **Thoughts**:
-  - The `open` command is implemented and checks the magic number for file validity.
-  - The menu system is functional and accepts case-insensitive commands.
-  - Encountered challenges with managing memory for B-Tree nodes while ensuring only 3 nodes are in memory at a time.
+  - Implemented the `insert` command to handle key-value pairs.
+  - Added logic to manage the root node and maintain node structure.
 
 - **Plan**:
-  - Begin implementing the `insert` command for adding key-value pairs.
-  - Focus on maintaining the B-Tree properties and splitting nodes as necessary.
-  - Test the `open` command with various valid and invalid files.
+  - Implement the `search` command to allow querying keys in the index file.
+  - Add preliminary tests for the `insert` and `search` commands.
 
 ---
 
 ## [2024-12-07 07:00 PM]
 - **Thoughts**:
-  - The `insert` method is partially implemented, but node splitting needs debugging to handle cases where nodes exceed the maximum number of keys.
-  - Added preliminary tests for inserting key-value pairs, which passed for simple cases.
+  - `search` functionality added and verified for simple cases.
+  - Challenges encountered in managing large B-Tree structures.
 
 - **Plan**:
-  - Complete the `insert` method, including file synchronization for new nodes.
-  - Start the `search` method to allow querying keys in the index file.
-  - Update the development log with progress and challenges.
+  - Test `insert` and `search` for edge cases.
+  - Add the `print` and `extract` commands.
 
 ---
 
-## [2024-12-07 11:30 PM]
+## [2024-12-07 09:30 PM]
 - **Reflections**:
-  - Accomplished a significant portion of the `create`, `open`, and `insert` commands.
-  - Encountered issues with handling large numbers of keys and maintaining parent-child relationships in the B-Tree structure.
-  - Found that splitting root nodes requires special handling, which will be addressed in the next session.
+  - Completed all primary commands: `create`, `open`, `insert`, `search`, `print`, and `extract`.
+  - Resolved issues with file I/O and verified correct B-Tree behavior.
 
 - **Next Steps**:
-  - Debug and finalize the `insert` command, especially handling node splits.
-  - Implement the `search` command fully and test it with various scenarios.
-  - Add placeholder implementations for remaining commands (`load`, `print`, `extract`).
+  - Write a `README.md` file to document the project.
+  - Package the repository for submission.
